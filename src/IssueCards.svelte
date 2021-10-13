@@ -1,6 +1,6 @@
 <script>
 
-    let issues = [
+    /*let issues = [
     {
     title: "Issue Card Component",
     description: "make component that prints the fetched issues as cards",
@@ -50,9 +50,15 @@
     id:"5"
     }
 
-]
+]*/
 
-console.log(issues)
+
+
+export let title;
+export let assignee;
+export let description
+export let id
+
 
 </script>
 
@@ -102,17 +108,14 @@ console.log(issues)
 </style>
 
 <div>
-    
     <div class = "issueCards">
-       {#each issues as issue}
        <div class="issueCard">
-           <h2 class="title">{issue.title}</h2>
-           <h3 class="id">{"Id: " + issue.id}</h3>
-           <h3 class="assignee">{"Assignee: " + issue.assignee}</h3>
+           <h2 class="title">{title}</h2>
+           <h3 class="id">{"Id: " + id}</h3>
+           <h3 class="assignee">{"Assignee: " + assignee}</h3>
            <div class="description">
-           <p>{issue.description}</p>
-        </div>
+           <p>{description}</p>
+           </div>
        </div>
-       {/each}
     </div>
 </div>
