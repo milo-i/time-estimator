@@ -1,10 +1,14 @@
 <script>
-	import IssueCards from "./issueCards.svelte"
+	import IssueCards from './IssueCards.svelte';
+	// export let name;
 	const fetchIssues = (async () => {
-		const response = await fetch('https://api.github.com/repos/milo-i/time-estimator/issues');
-    return await response.json()
-	})()
+		const response = await fetch(
+			'https://api.github.com/repos/milo-i/time-estimator/issues'
+		);
+		return await response.json();
+	})();
 </script>
+
 
 {#await fetchIssues}
 	<p>...loading</p>
@@ -12,23 +16,28 @@
 	<div class="issueWrapper">
 	<div class="issueCards">
 	{#each data as issue}
-        {#if issue.assignees.length > 0}
-			<IssueCards title={issue.title} assignee={issue.assignees[0].login} description={issue.body} id={issue.number} />
-        {/if}
-    {/each}
+		{#if issue.assignees.length > 0}
+			<IssueCards
+				title={issue.title}
+				assignee={issue.assignees[0].login}
+				description={issue.body}
+				id={issue.number}
+			  />
+		{/if}
+	{/each}
 	</div>
 	</div>
-{:catch error}
-	<p>An error occurred!</p>
-{/await}
+	{:catch error}
+		<p>An error occurred!</p>
+	{/await}
+
+
 
 <style>
-.issueCards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 40px;
-	justify-items: center;
-}
-
-
+	.issueCards {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		row-gap: 40px;
+		justify-items: center;
+	}	
 </style>
