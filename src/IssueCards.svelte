@@ -1,59 +1,5 @@
 <script>
 
-    /*let issues = [
-    {
-    title: "Issue Card Component",
-    description: "make component that prints the fetched issues as cards",
-    assignee: "Anton",
-    id: "1"
-    },
-    {
-    title: "Member 'login'",
-    description: "make component that handles which member who is active",
-    assignee: "Igor",
-    id: "2"
-    },
-    {
-    title:"Fetch data",
-    description: "make a fetch from githubg to get issues",
-    assignee: "Smari",
-    id:"3"
-    },
-    {
-    title:"Generate Report",
-    description: "Make a report with estimated time vs actual time",
-    assignee: "Emelie",
-    id:"4"
-    },
-    {
-    title:"User time estimation",
-    description: "make input field and function for the users estimated time on the issue",
-    assignee: "Jin",
-    id:"5"
-    },
-    {
-    title:"Close Issue Function",
-    description: "create function to close issue and report actual time",
-    assignee: "Anton",
-    id:"5"
-    },
-    {
-    title:"Some other Issue",
-    description: "create something ",
-    assignee: "Igor",
-    id:"5"
-    },
-    {
-    title:"Another unidentified Issue",
-    description: "build something, not sure 'bout what ",
-    assignee: "Smari",
-    id:"5"
-    }
-
-]*/
-
-
-
 export let title;
 export let assignee;
 export let description
@@ -64,14 +10,6 @@ export let id
 
 <style>
 
-.issueCards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 40px;
- 
-
-}
-
 .issueCard {
     border: 1px solid black;
     background-color: rgb(243, 167, 154);
@@ -80,6 +18,7 @@ export let id
     text-align: left;
     padding-left: 10px;
     box-shadow: 10px 10px rgb(43, 17, 13);
+
 }
 
 .title {
@@ -93,6 +32,8 @@ export let id
     width: 280px;
     padding-left: 5px;
     padding-top: 0px;
+    font-size: large;
+    font-weight: bold;
     
 }
 
