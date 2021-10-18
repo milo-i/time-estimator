@@ -5,6 +5,7 @@
 	import Anton from './Anton.svelte';
 	import Emelie from './Emelie.svelte';
 	import Igor from './Igor.svelte';
+	import Jin from './Jin.svelte';
 
 	// export let name;
 	const fetchIssues = (async () => {
@@ -59,6 +60,15 @@
 		{/if}
 		{#if activeMember === "igor"}
 		<Igor
+		title={issue.title}
+		assignee={issue.assignees[0].login}
+		description={issue.body}
+		id={issue.number}
+		activeMember = {activeMember} 
+		/>
+		{/if}
+		{#if activeMember === "jin"}
+		<Jin
 		title={issue.title}
 		assignee={issue.assignees[0].login}
 		description={issue.body}
