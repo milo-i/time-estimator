@@ -1,6 +1,18 @@
 <script>
 	import FetchIssues from './FetchIssues.svelte';
 	let name = 'smaristeinar';
+	let activeMember;
+
+	function reloadCards() {
+        console.log("the name has been changed");
+        let chooseMember =  document.querySelector('#members');
+        activeMember = chooseMember.value;
+        console.log(activeMember)
+        //localStorage.setItem("Active Member", activeMember)
+        
+    }
+	
+
 </script>
 
 <main>
@@ -9,7 +21,8 @@
 <div class="members-selctor"></div>
 	<label for="members">Choose a member:</label>
 
-	<select  name="members" id="members">
+	<select on:change={reloadCards} name="members" id="members">
+		<option value=""></option>
 		<option value="smaristeinar">Smari</option>
 		<option value="anton">Anton</option>
 		<option value="emelie">Emelie</option>
@@ -17,7 +30,7 @@
 		<option value="jin">Jin</option>
 	</select>
 
-	<FetchIssues {name} />
+	<FetchIssues {name} activeMember = {activeMember} />
 </main>
 
 <style>
