@@ -6,13 +6,25 @@
 	export let assignee;
 	export let description;
 	export let id;
-
+	
 	let inputValue;
 
 	function handleClick() {
+		let arry = [];
 		console.log("Issue:", id, "estimated time:", inputValue);
+		if (!window.localStorage.getItem(`${id}`)) {
+			arry.push(inputValue)
+			window.localStorage.setItem(`${id}`,JSON.stringify(arry));
+		}
+		else{
+			arry = JSON.parse(localStorage.getItem(`${id}`));
+			arry.push(inputValue);
+			window.localStorage.setItem(`${id}`,JSON.stringify(arry));
+		}
+		
 		//inputValue = "";
 	}
+	
 	
 	export let activeMember;
 
