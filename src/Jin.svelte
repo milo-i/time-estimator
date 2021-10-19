@@ -9,19 +9,21 @@
 	
 	let inputValue;
 
-	function handleClick() {
+	function handleClick(buttonid) {
 		let arry = [];
 		console.log("Issue:", id, "estimated time:", inputValue);
-		if (!window.localStorage.getItem(`${id}`)) {
+		if (!window.localStorage.getItem(`${id}`) && inputValue) {
 			arry.push(inputValue)
 			window.localStorage.setItem(`${id}`,JSON.stringify(arry));
 		}
-		else{
+		else if(buttonid){
 			arry = JSON.parse(localStorage.getItem(`${id}`));
 			arry.push(inputValue);
 			window.localStorage.setItem(`${id}`,JSON.stringify(arry));
 		}
-		
+		if (inputValue) {
+		document.getElementById(buttonid).classList.add("disable-button");
+		}
 		//inputValue = "";
 	}
 	
@@ -49,7 +51,7 @@
 					Estimate hours
 					<input bind:value={inputValue} placeholder={activeMember} type="number" pattern="[0-9]" id="inputField" />
 				</label>
-				<button on:click={handleClick}>Save</button>
+				<button id="{assignee + id}" on:click={handleClick(assignee + id)}>Save</button>
 			</div>
 		</div>
 	</div>
