@@ -38,7 +38,7 @@
 </script>
 
 <div>
-	<div class="issueCards">
+	<div class="">
 		<div class="issueCard">
 			<h2 class="title">{title}</h2>
 			<h3 class="id">{'Id: ' + id}</h3>
