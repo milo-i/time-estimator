@@ -25,13 +25,19 @@
       return Math.min(a, b);
     };
 
-    // const getAverage = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+    const getMedian = (arr) => {
+      arr.sort((a, b) => a - b);
+      let lowMiddle = Math.floor((arr.length - 1) / 2);
+      let highMiddle = Math.ceil((arr.length - 1) / 2);
+      let median = (arr[lowMiddle] + arr[highMiddle]) / 2;
+      return median;
+    };
 
     const keys = Object.keys(localStorage);
     for (let key of keys) {
       console.log(`${key}: ${localStorage.getItem(key)}`); // localStorage.getItem(key) är av typen string, INTE number
 
-      console.log(JSON.parse(localStorage.getItem(key)).length);
+      // console.log(JSON.parse(localStorage.getItem(key)).length);
       document.getElementById('report-section').insertAdjacentHTML(
         'beforeend',
         `<div class="time-est"><p>Issue id: ${key} total time estimation: ${JSON.parse(
@@ -46,9 +52,9 @@
           <p>Average: ${
             JSON.parse(localStorage.getItem(key)).reduce((a, b) => a + b) /
             JSON.parse(localStorage.getItem(key)).length
-          }
-
-          </p></div>`
+          }</p>
+          <p>Median: ${getMedian(JSON.parse(localStorage.getItem(key)))}</p>   
+          </div>`
       );
     }
   };
