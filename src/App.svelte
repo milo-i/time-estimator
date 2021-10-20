@@ -35,9 +35,6 @@
 
     const keys = Object.keys(localStorage);
     for (let key of keys) {
-      console.log(`${key}: ${localStorage.getItem(key)}`); // localStorage.getItem(key) är av typen string, INTE number
-
-      // console.log(JSON.parse(localStorage.getItem(key)).length);
       document.getElementById('report-section').insertAdjacentHTML(
         'beforeend',
         `<div class="time-est"><p>Issue id: ${key} total time estimation: ${JSON.parse(
@@ -75,7 +72,9 @@
     <option value="jin">Jin</option>
   </select>
 
-  <button on:click={generateReport}>Generate time report</button><br />
+  <button class="report-btn" on:click={generateReport}
+    >Generate time report</button
+  ><br />
   <div id="report-section" />
 
   <FetchIssues {name} {activeMember} />
@@ -117,12 +116,14 @@
   }
   .report-btn {
     background-color: aqua;
+    border-radius: 10px;
   }
   #report-section {
     background-color: bisque;
-    /* border: 1px solid black; */
-  }
-  div.time-est {
     border: 1px solid black;
+    margin-bottom: 100px;
+  }
+  .time-est {
+    background-color: green;
   }
 </style>
