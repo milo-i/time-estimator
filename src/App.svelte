@@ -17,19 +17,39 @@
     const reducer = (previousValue, currentValue) =>
       previousValue + currentValue;
 
+    const getMax = (a, b) => {
+      return Math.max(a, b);
+    };
+
+    const getMin = (a, b) => {
+      return Math.min(a, b);
+    };
+
+    // const getAverage = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+
     const keys = Object.keys(localStorage);
     for (let key of keys) {
-      console.log(`${key}: ${JSON.parse(localStorage.getItem(key))}`); // localStorage.getItem(key) är av typen string, INTE number
+      console.log(`${key}: ${localStorage.getItem(key)}`); // localStorage.getItem(key) är av typen string, INTE number
 
-      document
-        .getElementById('report-section')
-        .insertAdjacentHTML(
-          'beforeend',
-          `<p>För issue med id: ${key} är den totala estimerade tiden: ${JSON.parse(
+      console.log(JSON.parse(localStorage.getItem(key)).length);
+      document.getElementById('report-section').insertAdjacentHTML(
+        'beforeend',
+        `<div class="time-est"><p>Issue id: ${key} total time estimation: ${JSON.parse(
+          localStorage.getItem(key)
+        ).reduce(reducer)}</p>
+          <p>Max estimation time: ${JSON.parse(
             localStorage.getItem(key)
-          ).reduce(reducer)}</p>`
-        );
-      console.log(typeof JSON.parse(localStorage.getItem(key)));
+          ).reduce(getMax)}</p>
+          <p>Min estimation time: ${JSON.parse(
+            localStorage.getItem(key)
+          ).reduce(getMin)}</p>
+          <p>Average: ${
+            JSON.parse(localStorage.getItem(key)).reduce((a, b) => a + b) /
+            JSON.parse(localStorage.getItem(key)).length
+          }
+
+          </p></div>`
+      );
     }
   };
 </script>
@@ -91,5 +111,12 @@
   }
   .report-btn {
     background-color: aqua;
+  }
+  #report-section {
+    background-color: bisque;
+    /* border: 1px solid black; */
+  }
+  div.time-est {
+    border: 1px solid black;
   }
 </style>
