@@ -67,3 +67,10 @@ button:focus {
 	background-color: rgb(6, 235, 6);
 	pointer-events: none;
 }
+
+  .time-est {
+    background-color: rgb(155, 190, 166);
+				border: 1.5px solid black;
+				padding-left: 20px;
+				font-family: Arial, Helvetica, sans-serif;
+  }

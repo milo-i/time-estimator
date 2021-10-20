@@ -37,7 +37,8 @@
     for (let key of keys) {
       document.getElementById('report-section').insertAdjacentHTML(
         'beforeend',
-        `<div class="time-est"><p>Issue id: ${key} total time estimation: ${JSON.parse(
+        `<div class="time-est"><p>Issue id: ${key}</p> 
+        <p>Total time estimation: ${JSON.parse(
           localStorage.getItem(key)
         ).reduce(reducer)}</p>
           <p>Max estimation time: ${JSON.parse(
@@ -120,10 +121,6 @@
   }
   #report-section {
     background-color: bisque;
-    border: 1px solid black;
     margin-bottom: 100px;
-  }
-  .time-est {
-    background-color: green;
   }
 </style>
